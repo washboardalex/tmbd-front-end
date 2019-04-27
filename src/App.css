@@ -1,17 +1,38 @@
-@font-face {
-  font-family: 'LoveloBlack';
-  src:url('./static/fonts/LoveloBlack.ttf.woff') format('woff'),
-      url('./static/fonts/LoveloBlack.ttf.svg#LoveloBlack') format('svg'),
-      url('./static/fonts/LoveloBlack.ttf.eot'),
-      url('./static/fonts/LoveloBlack.ttf.eot?#iefix') format('embedded-opentype'); 
-  font-weight: normal;
-  font-style: normal;
+h2 {
+    font-family: 'Arial';
+    color: rgb(208, 219, 224);
+    font-size:1.3em;
 }
 
-h1 {
-  font-family: 'LoveloBlack';
+p {
+    font-family: 'Arial';
+    font-size: 13px;
+    margin:6px;
 }
 
-.App {
-  text-align: center;
+.app {
+    background-color: rgb(8,26,36);
+}
+
+.logo {
+    width: 30vw;
+    height: 30vw; 
+    max-width: 150px; 
+    max-height: 150px; 
+    min-width: 100px; 
+    min-height: 100px
+}
+
+.ctr {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.logo-cont {
+    justify-content: center;
+    height:30vh;
+    width: 100vw;
+    position:relative;
+    background-image: radial-gradient(ellipse at top, rgb(5, 47, 68), rgb(8,26,36));
 }
