@@ -2,6 +2,8 @@
 
 This is a create-react-app build of the tmdb front end as specified in the Jumbo Interactive technical challenge. To view, clone this repository and then run
 
+The app is also hosted [here](https://tmbd-front-end.herokuapp.com/) if you wish to see it deployed.
+
 ### `npm install`
 
 and
