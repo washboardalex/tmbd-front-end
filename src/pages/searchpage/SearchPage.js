@@ -1,7 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import SearchBox from '../components/searchbox/SearchBox.js';
 import CardList from '../components/moviecards/CardList';
-import apiKey from '../../key';
+import apiKey from '../../api/apiKey';
+import apiCall from '../../api/apiCall';
+
 
 import themoviedb from '../../static/themoviedb.svg';
 import './SearchPage.css';
@@ -26,34 +28,28 @@ class SearchPage extends Component {
         });
     }
 
-    fetchBoilerplate = (qryStr) => {
-        fetch(`https://api.themoviedb.org/3/${qryStr}`, {
-                method: 'GET',
-                headers: {
-                'Content-Type': 'application/json'
-                }
-            })
-            .then(response => response.json())
-            .then(data => {
-                this.setState(prevState => ({
-                    movies: data.results,
-                    isLoading: false
-                }))
-            })
-            .catch(console.log)
+    fetchStateUpdateHelper = (data) => {
+        this.setState(prevState => ({
+            movies: data.results,
+            isLoading: false
+        }))
     }
 
     onSearch = () => {
         const searchVal = document.getElementById('search-box').value;
         if (searchVal !== "") {
             this.setState(prevState => ({ isSearch: true, isLoading:true }))
-            this.fetchBoilerplate(`search/movie?api_key=${apiKey}&language=en-US&query=${searchVal}&page=1&include_adult=false`);
+            apiCall(`search/movie?api_key=${apiKey}&language=en-US&query=${searchVal}&page=1&include_adult=false`)
+            .then(data => { this.fetchStateUpdateHelper(data) })
+            .catch(console.log);
         }
     }
 
     fetchMovies = () => {
         this.setState(prevState => ({ isSearch: false }))
-        this.fetchBoilerplate(`movie/popular?api_key=${apiKey}&language=en-US&page=1`);
+        apiCall(`movie/popular?api_key=${apiKey}&language=en-US&page=1`)
+        .then(data => { this.fetchStateUpdateHelper(data) })
+        .catch(console.log);
     }
 
     render() {

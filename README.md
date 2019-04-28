@@ -1,68 +1,53 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## The Basics
 
-## Available Scripts
+This is a create-react-app build of the tmdb front end as specified in the Jumbo Interactive technical challenge. To view, clone this repository and then run
 
-In the project directory, you can run:
+###`npm install`
+
+and
 
 ### `npm start`
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+in your terminal of choice.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+## Jumbo Interactive Criteria
 
-### `npm test`
+* Must use TMDB API - yes, entire database of movies is searchable. Initial render provides a short list of popular movies for user perusal.
+* Must display a list of popular media (TV or Movies) - yes
+* Must link each entity to details page with relevant information - yes
+* Must maintain browser history - yes. Browser history is maintained with react router's history object
+* Must match provided mocks - yes. Implementation matches mocks across a full range of devices (tested in chrome dev tools) and is fully responsive.
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+##Broad Project Structure
 
-### `npm run build`
+The app is split into two pages, navigated via react router. The first is the Search Page, comprised of a search box and list of movies. Searching calls a query to the TMDB API which updates the list of movies. The second page, the Details Page, is accessible via link from a movie card only as props are passed between components. Navigating to the Detail Page directly results in a redirect to prevent the app crashing. The detail page is rendered as a single component.
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Considerations Addressed
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+In addressing these considerations, I wanted to offer solutions which were efficient as well as effective - the 8-hour working timeframe was a guide and whilst I did ending up working on the app for somewhat longer I did want to maintain some degree of time efficiency to simulate the employment environment.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+As such, while I believe my solutions can certainly be improved upon (see below section), the work completed offers a solid base for scaling.
 
-### `npm run eject`
+* Accuracy of implementation: I don't have many comments here. My main concern beyond matching the mockup in Figma was to ensure that I remained faithful to the design and maintained a degree of pleasant UX once the UI was fully interactive (click-through, loading screens, window resizes, etc). 
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+There are some low-key hover effects and an animated loading spinner which are understated enough not to disturb the overall visual impact of the UI.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+To minimise resource use, I elected not to use a CSS framework. Usually I will use Bootstrap or Material UI, in this case I wanted to challenge myself to apply coherent principles to produce a fully responsive layout. 
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+I ended up using classes to bunch view-width and view-height rules to scale elements with max and min sizes to ensure elements did not crowd, along with CSS flexbox for layout. The strength of this approach was resource efficiency and simplicity. It impacted reusability of some JSX and CSS which is discussed below.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+* Scalability & Testing: The site is built in React, which offers built-in state management and project structure based on components rather than separation of technologies. 
 
-## Learn More
+Only the two pages are stateful, and with one tweak (see below) it is possible for only one to be stateful. All components are either pure JS functions or are classes using componentDidMount only, without state. Any interactive elements have been extracted to prevent redundant re-rendering. 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+This allows for greater reusability of components but also allows for easy testability as functions will act predictably to inputs. For the same reason the initial call to the fetch api has been abstracted into a function taking a query string as input.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Potential Improvements
 
-### Code Splitting
+- Scalability & Testability: For some reason when receiving the array of popular movies the duration is not included in the JSON. Getting the duration requires a second fetch call for each movie using its id. I would have liked to have everything in one api call which could then just be passed as props to each card, used on click-through to render the details page. The alternative to making the details page a class was iterating over each movie id and making a separate fetch call to get duration whilst on the search page. I felt this would impact performance too much and elected to forsake the details page as a purely functional component.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+The cost of this second call to API is lessened if one considers fleshing out the details page more fully - beyond film duration a wealth of data can be integrated into that page from the second fetch method.
 
-### Analyzing the Bundle Size
+The somewhat inefficient use of classes in my build versus using purely functional components would have been helped by implementing redux in this build - it also would have allowed for easier testabiliy. Whilst I am familiar with redux and originally planned to use it, I am not familiar with integrating redux and react router. Ultimately, given the time constraint and my uncertainty in estimating how long it would take to learn how to use react router and redux together *correctly*, I elected to use out-of-box state. My compartmentalisation of state allows for redux to be integrated relatively simply in future.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+- Accuracy of Implementation - Not using a framework impacted the reusability of the poster element, as I had to write some fiddly custom CSS code in the wrapper to allow for the translation to occur on the details page. This component is not interactive, nor has it props, so the cost is not great. Nevertheless, it points to possible improvements in this area.

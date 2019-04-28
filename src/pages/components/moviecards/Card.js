@@ -1,6 +1,6 @@
 import React from 'react';
 import './styles/Card.css';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Card = ({ name, id, released, score, poster, backdropImg, overview }) => (
     <div style={{margin:'15px', float:'left'}}>
@@ -13,7 +13,7 @@ const Card = ({ name, id, released, score, poster, backdropImg, overview }) => (
             }}
         >
             <div style={{position:'relative'}}> 
-                <div className="postr-wrap">
+                <div className="postr-wrap hov">
                     <img className="postr" src={`https://image.tmdb.org/t/p/w500${poster}`} alt={name} />
                 </div>
                 <p 

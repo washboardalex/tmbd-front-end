@@ -2,8 +2,8 @@ import React from 'react';
 import './App.css'
 import { BrowserRouter as Router, Route } from 'react-router-dom'; 
 
-import SearchPage from './pages/searchpage/SearchPage.js'
-import DetailsPage from './pages/detailspage/DetailsPage';
+import SearchPage from '../pages/searchpage/SearchPage.js'
+import DetailsPage from '../pages/detailspage/DetailsPage';
 
 const App = () => (
       <Router>

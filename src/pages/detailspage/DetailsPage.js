@@ -1,5 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { Redirect } from 'react-router-dom';
+import apiKey from '../../api/apiKey';
+import apiCall from '../../api/apiCall';
 
 import '../components/moviecards/styles/Card.css';
 import './DetailsPage.css';
@@ -16,17 +18,11 @@ class DetailsPage extends Component {
     componentDidMount() {
         if (this.props.location.state !== undefined) {
             const { id } = this.props.location.state;
-            fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=6ed12e064b90ae1290fa326ce9e790ff&language=en-US`, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-            .then(response => response.json())
+            apiCall(`movie/${id}?api_key=${apiKey}&language=en-US`)
             .then(data => {
-            this.setState(prevState => ({
-                duration: data.runtime
-            }))
+                this.setState(prevState => ({
+                    duration: data.runtime
+                }))
             })
             .catch(console.log)
         }
@@ -49,7 +45,7 @@ class DetailsPage extends Component {
                 </div>
                 <div style={{display:'flex', flexWrap:'wrap'}}>
                     <div style={{marginRight:'10vw'}} className="postr-wrap-dtls" >
-                        <img className="postr no-hov trslte" src={`https://image.tmdb.org/t/p/w500/${poster}`} alt={`${name} poster`}/>
+                        <img className="postr trslte" src={`https://image.tmdb.org/t/p/w500/${poster}`} alt={`${name} poster`}/>
                     </div>
                     <div className="dtls-wrap">
                         <h1 className="dtls-head">{name}</h1>

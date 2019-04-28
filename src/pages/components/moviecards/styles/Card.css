@@ -2,10 +2,13 @@
     height: 35vw;
     max-height:300px;
     min-height:200px;
+}
+
+.hov {
     transition:0.3s;
 }
 
-.postr-wrap:hover {
+.hov:hover {
     cursor:pointer;
     transform:scale(1.02);
     transition: 0.3s;
