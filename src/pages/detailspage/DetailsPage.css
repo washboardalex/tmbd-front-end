@@ -1,0 +1,57 @@
+.bckgrd {
+    background-size:cover;
+    background-position:0% 30%;
+    width:100vw;
+    height:55vw;
+    min-height: 40vh;
+    max-height:50vh;
+    position:relative;
+}
+
+.divider {
+    width:90vw;
+    margin-left:5vw;
+    border:1px solid #0F303D;
+    margin-bottom:25px;
+    margin-top:25px;
+    position:relative;
+}
+
+.ovrvw-wrap {
+    width:80vw;
+    margin-left:5vw;
+    padding-bottom:90px;
+}
+
+.ovrvw {
+    color:#A1D1E6;
+    font-size:15px;
+    margin-left:0px;
+}
+
+.rsize {
+    cursor:pointer;
+    color:white;
+    position:absolute;
+    top:2vw;
+    left:2vw;
+    font-size:35px;
+}
+
+.dtls-wrap {
+    display:block;
+    max-height:180px;
+    width:45vw;
+    margin-bottom:20px;
+}
+
+.dtls-head {
+    padding:0px;
+    margin:0px;
+    margin-top:15px;
+}
+
+.dtls-txt {
+    color:#B8D8E6;
+    margin-left:0px;
+}

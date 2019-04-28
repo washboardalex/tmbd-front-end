@@ -1,0 +1,49 @@
+.postr-wrap {
+    height: 35vw;
+    max-height:300px;
+    min-height:200px;
+    transition:0.3s;
+}
+
+.postr-wrap:hover {
+    cursor:pointer;
+    transform:scale(1.02);
+    transition: 0.3s;
+}
+
+.postr {
+    height: 35vw;
+    max-height:300px;
+    min-height:200px;
+    box-shadow:0px 0px 15px black !important; /* React router link restyles shadow to blue. */
+    border-radius:10px;
+    width:auto;
+    top:0;
+    left:0;
+}
+
+.usr-score {
+    position:absolute;
+    top:0px;
+    left:0px;
+    color:white;
+    font-weight:bold;
+    padding:4px;
+    padding-left:8px;
+    padding-right:8px;
+    border-radius:15px;
+}
+
+/* Styling related to poster card in the details component */
+
+
+.trslte {
+    transform: translateX(5vw) translateY(-40%);
+}
+
+.postr-wrap-dtls {
+    height: 22vw;
+    max-height:180px;
+    min-height:90px;
+    transition:0.3s;
+}

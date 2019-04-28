@@ -14,13 +14,14 @@ const style = {
 
 const buttonStyle = { borderRadius:'50%' }
 
-const SearchBox = () => (
+const SearchBox = ({onSearch}) => (
     <div style={style}>
         <input
+            id="search-box"
             type='search'
             placeholder='Find more Movies...'
         />
-        <button style={buttonStyle}>?</button>
+        <button onClick={onSearch} style={buttonStyle}>?</button>
     </div>
 );
 

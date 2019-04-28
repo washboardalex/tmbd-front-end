@@ -1,17 +1,26 @@
+h1 {
+    color: #E3F4FC;
+}
+
 h2 {
     font-family: 'Arial';
-    color: rgb(208, 219, 224);
+    color: #E3F4FC;
     font-size:1.3em;
 }
 
 p {
-    font-family: 'Arial';
+    font-family: 'Roboto', sans-serif;
     font-size: 13px;
     margin:6px;
 }
 
 .app {
     background-color: rgb(8,26,36);
+    min-height:100vh;
+    width:100vw;
+    position:absolute;
+    top:0;
+    left:0;
 }
 
 .logo {
