@@ -2,7 +2,7 @@
 
 This is a create-react-app build of the tmdb front end as specified in the Jumbo Interactive technical challenge. To view, clone this repository and then run
 
-###`npm install`
+### `npm install`
 
 and
 
@@ -18,7 +18,7 @@ in your terminal of choice.
 * Must maintain browser history - yes. Browser history is maintained with react router's history object
 * Must match provided mocks - yes. Implementation matches mocks across a full range of devices (tested in chrome dev tools) and is fully responsive.
 
-##Broad Project Structure
+## Broad Project Structure
 
 The app is split into two pages, navigated via react router. The first is the Search Page, comprised of a search box and list of movies. Searching calls a query to the TMDB API which updates the list of movies. The second page, the Details Page, is accessible via link from a movie card only as props are passed between components. Navigating to the Detail Page directly results in a redirect to prevent the app crashing. The detail page is rendered as a single component.
 
