@@ -14,6 +14,19 @@ p {
     margin:6px;
 }
 
+::placeholder { 
+    color: rgb(1,210,119);
+    opacity: 1; 
+  }
+  
+  :-ms-input-placeholder { 
+    color: rgb(1,210,119);
+  }
+  
+  ::-ms-input-placeholder { 
+    color: rgb(1,210,119);
+  }
+
 .app {
     background-color: rgb(8,26,36);
     min-height:100vh;

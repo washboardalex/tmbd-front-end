@@ -8,8 +8,7 @@ class DetailsPage extends Component {
     constructor() {
         super();
         this.state = {
-            isLoading: true,
-            duration: ''
+            duration: 0
         }
     }
 
@@ -24,15 +23,13 @@ class DetailsPage extends Component {
         .then(response => response.json())
         .then(data => {
         this.setState(prevState => ({
-            duration: data.runtime,
-            isLoading:false
+            duration: data.runtime
         }))
         })
         .catch(console.log)
     }
 
     render() {
-
         const { backdropImg, overview, poster, name, released, score } = this.props.location.state;
         const { duration } = this.state;
 
@@ -48,7 +45,7 @@ class DetailsPage extends Component {
                     <div className="dtls-wrap">
                         <h1 className="dtls-head">{name}</h1>
                         <p className="dtls-txt">Released {released} <span>&#183;</span> {score*10}% User Score</p>
-                        <p className="dtls-txt">{Math.floor(duration/60)}h {duration%60} min</p>
+                        <p className="dtls-txt">{ Math.floor(duration/60)}h {duration%60 } min</p>
                     </div>
                 </div>
                 <div className="divider" ></div>

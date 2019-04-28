@@ -1,0 +1,30 @@
+.sch-box {
+    width:80vw; 
+    max-width:450px; 
+    display:flex; 
+    height:50px; 
+    border-radius:25px; 
+    align-items: center; 
+    justify-content:space-between;
+    background-color:white;
+    padding-left:15px;
+    padding-right:15px;
+}
+
+.sch-input {
+    border: none;
+    color: rgb(1,210,119);
+    width:85%;
+    font-size:18px;
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+}
+
+.sch-input:focus {
+    outline: none;
+}
+
+.sch-btn {
+    color: rgb(1,210,119);
+    cursor: pointer;
+}

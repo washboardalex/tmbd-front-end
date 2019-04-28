@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import SearchBox from './components/searchbox/SearchBox.js';
 import CardList from './components/moviecards/CardList';
+import apiKey from '../key';
 
 import themoviedb from '../static/themoviedb.svg';
 
@@ -11,9 +12,17 @@ class SearchPage extends Component {
         this.state = {
             searchField: '',
             movies: [],
-            isPplr: true,
+            isSearch: false,
             isLoading: true
         }
+    }
+
+    componentDidMount() {
+        window.addEventListener('keypress', (e) => {
+            if (e.keyCode === 13) {
+                this.onSearch()
+            }
+        });
     }
 
     fetchBoilerplate = (qryStr) => {
@@ -36,24 +45,19 @@ class SearchPage extends Component {
     onSearch = () => {
         const searchVal = document.getElementById('search-box').value;
         if (searchVal !== "") {
-            this.setState(prevState => ({
-                isPplr: false
-            }))
-            this.setState(prevState => ({isLoading:true}))
-            this.fetchBoilerplate(`search/movie?api_key=6ed12e064b90ae1290fa326ce9e790ff&language=en-US&query=${searchVal}&page=1&include_adult=false`);
+            this.setState(prevState => ({ isSearch: true, isLoading:true }))
+            this.fetchBoilerplate(`search/movie?api_key=${apiKey}&language=en-US&query=${searchVal}&page=1&include_adult=false`);
         }
     }
 
     fetchMovies = () => {
-        this.setState(prevState => ({
-            isPplr: true
-        }))
-        this.fetchBoilerplate('movie/popular?api_key=6ed12e064b90ae1290fa326ce9e790ff&language=en-US&page=1');
+        this.setState(prevState => ({ isSearch: false }))
+        this.fetchBoilerplate(`movie/popular?api_key=${apiKey}&language=en-US&page=1`);
     }
 
     render() {
 
-        const { movies, isLoading, isPplr } = this.state;
+        const { movies, isLoading, isSearch } = this.state;
 
         return (
             <Fragment>
@@ -64,7 +68,7 @@ class SearchPage extends Component {
                     <SearchBox onSearch={this.onSearch} />
                 </div>
                 <div style={{paddingLeft:'5vw', paddingTop:'25px'}}>
-                    <h2>{isPplr ? 'Popular Movies' : 'Your Search'}</h2>
+                    <h2>{isSearch ? 'Your Search' : 'Popular Movies'}</h2>
                     <CardList movies={movies} isLoading={isLoading} fetchMovies={this.fetchMovies}/>
                 </div>
             </Fragment>

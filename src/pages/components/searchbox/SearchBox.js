@@ -1,27 +1,20 @@
 import React from 'react';
-
-const style = {
-    width:'80vw', maxWidth:'450px', 
-    display:'flex', 
-    height:'40px', 
-    borderRadius:'20px', 
-    alignItems: 'center', 
-    justifyContent:'space-between',
-    backgroundColor:'white',
-    paddingLeft:'15px',
-    paddingRight:'15px'
-}
-
-const buttonStyle = { borderRadius:'50%' }
+import './SearchBox.css';
 
 const SearchBox = ({onSearch}) => (
-    <div style={style}>
+    <div className="sch-box">
         <input
             id="search-box"
-            type='search'
+            className="sch-input"
+            type="text"
             placeholder='Find more Movies...'
         />
-        <button onClick={onSearch} style={buttonStyle}>?</button>
+        <span onClick={onSearch}>
+            <i   className="material-icons sch-btn">
+            search
+            </i>
+        </span>
+        
     </div>
 );
 
