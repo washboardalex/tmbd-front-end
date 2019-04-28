@@ -10,6 +10,8 @@ and
 
 in your terminal of choice.
 
+Please note that the api key is in .gitignore so please include your own apiKey.js file.
+
 The app is also hosted [here](https://tmbd-front-end.herokuapp.com/) if you wish to see it deployed.
 
 ## Jumbo Interactive Criteria
