@@ -1,9 +1,10 @@
 import React, { Component, Fragment } from 'react';
-import SearchBox from './components/searchbox/SearchBox.js';
-import CardList from './components/moviecards/CardList';
-import apiKey from '../key';
+import SearchBox from '../components/searchbox/SearchBox.js';
+import CardList from '../components/moviecards/CardList';
+import apiKey from '../../key';
 
-import themoviedb from '../static/themoviedb.svg';
+import themoviedb from '../../static/themoviedb.svg';
+import './SearchPage.css';
 
 
 class SearchPage extends Component {
@@ -63,6 +64,12 @@ class SearchPage extends Component {
             <Fragment>
                 <div className="ctr logo-cont" >
                     <img className="logo" src={themoviedb} alt="Logo" />
+                    <div className="ray one"></div>
+                    <div className="ray two"></div>
+                    <div className="ray three"></div>
+                    <div className="ray four"></div>
+                    <div className="ray five"></div>
+                    <div className="ray six"></div>
                 </div>
                 <div className="ctr">
                     <SearchBox onSearch={this.onSearch} />

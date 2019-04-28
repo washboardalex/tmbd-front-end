@@ -35,26 +35,3 @@ p {
     top:0;
     left:0;
 }
-
-.logo {
-    width: 30vw;
-    height: 30vw; 
-    max-width: 150px; 
-    max-height: 150px; 
-    min-width: 100px; 
-    min-height: 100px
-}
-
-.ctr {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
-
-.logo-cont {
-    justify-content: center;
-    height:30vh;
-    width: 100vw;
-    position:relative;
-    background-image: radial-gradient(ellipse at top, rgb(5, 47, 68), rgb(8,26,36));
-}

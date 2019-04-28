@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import { Redirect } from 'react-router-dom';
 
 import '../components/moviecards/styles/Card.css';
 import './DetailsPage.css';
@@ -8,28 +9,36 @@ class DetailsPage extends Component {
     constructor() {
         super();
         this.state = {
-            duration: 0
+            duration: 0,
         }
     }
 
     componentDidMount() {
-        const { id } = this.props.location.state;
-        fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=6ed12e064b90ae1290fa326ce9e790ff&language=en-US`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-        .then(response => response.json())
-        .then(data => {
-        this.setState(prevState => ({
-            duration: data.runtime
-        }))
-        })
-        .catch(console.log)
+        if (this.props.location.state !== undefined) {
+            const { id } = this.props.location.state;
+            fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=6ed12e064b90ae1290fa326ce9e790ff&language=en-US`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+            this.setState(prevState => ({
+                duration: data.runtime
+            }))
+            })
+            .catch(console.log)
+        }
     }
 
     render() {
+        if ( this.props.location.state === undefined ) {
+            return (
+                <Redirect to="/" push />
+            )
+        }
+
         const { backdropImg, overview, poster, name, released, score } = this.props.location.state;
         const { duration } = this.state;
 
@@ -55,6 +64,7 @@ class DetailsPage extends Component {
                 </div>
             </Fragment>
         );
+  
     }
 }
 

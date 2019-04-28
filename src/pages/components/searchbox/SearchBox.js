@@ -1,5 +1,6 @@
 import React from 'react';
 import './SearchBox.css';
+import '../../searchpage/SearchPage.css';
 
 const SearchBox = ({onSearch}) => (
     <div className="sch-box">
