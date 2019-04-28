@@ -54,6 +54,8 @@ For some reason when receiving the array of popular movies the duration is not i
 
 The cost of this second call to API is lessened if one considers fleshing out the details page more fully - beyond film duration a wealth of data can be integrated into that page from the second fetch method.
 
+An alternative would be to use Hooks to accomplish the componentDidMount functions. I am aware of this functionality and will familiarize myself with hooks in future.
+
 The somewhat inefficient use of classes in my build versus using purely functional components would have been helped by implementing redux in this build - it also would have allowed for easier testabiliy. Whilst I am familiar with redux and originally planned to use it, I am not familiar with integrating redux and react router. Ultimately, given the time constraint and my uncertainty in estimating how long it would take to learn how to use react router and redux together *correctly*, I elected to use out-of-box state. My compartmentalisation of state allows for redux to be integrated relatively simply in future.
 
 ### Accuracy of Implementation
